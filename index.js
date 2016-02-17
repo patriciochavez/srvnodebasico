@@ -9,12 +9,24 @@ app.use(bodyParser.urlencoded({
 	}));
 
 app.get(/^(.+)$/, function(req, res){ 
-	console.log('GET: Archivo estático solicitado : ' + req.params[0]);
+	console.log('GET: Archivo estatico solicitado : ' + req.params[0]);
+
+	switch(req.params[0]) {
+			    case '/get1.html':
+				console.log('GET1');
+				   break;
+			    case '/get2.html':
+				console.log('GET2');
+				   break;
+			    default:
+				console.log(req.params[0]);
+				}	
+
 	res.sendFile( __dirname + req.params[0]); 
  });
  
 app.post(/^(.+)$/, function(req, res){ 
-	console.log('POST: Archivo estático solicitado : ' + req.params[0]);
+	console.log('POST: Archivo estatico solicitado : ' + req.params[0]);
 });
 
 var port = process.env.PORT || 8000;
