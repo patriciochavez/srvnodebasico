@@ -8,18 +8,22 @@ app.use(bodyParser.urlencoded({
 	extended: true
 	}));
 
+function imprimir(mensaje){
+	console.log(mensaje);
+	}
+
 app.get(/^(.+)$/, function(req, res){ 
 	console.log('GET: Archivo estatico solicitado : ' + req.params[0]);
 
 	switch(req.params[0]) {
 			    case '/get1.html':
-				console.log('GET1');
+				imprimir('get1');
 				   break;
 			    case '/get2.html':
-				console.log('GET2');
+				imprimir('get2');
 				   break;
 			    default:
-				console.log(req.params[0]);
+				imprimir(req.params[0]);
 				}	
 
 	res.sendFile( __dirname + req.params[0]); 
